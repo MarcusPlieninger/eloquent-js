@@ -1,9 +1,9 @@
 function loopingTriangle() {
+  // build a triangle as a return value for testing
   let triangle = ''
   for (let line = '#'; line.length < 8; line += '#') {
     console.log(line)
 
-    // build a triangle as a return value for testing
     // first line of triangle will have exactly 1 '#' and 1 newline character
     if (line.length === 1) triangle = line + '\n'
     // now we build on the previous triangle
