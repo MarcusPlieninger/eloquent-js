@@ -3,7 +3,7 @@ function triangle2(size) {
 
   if (!size) return 'Triangle size most be a positive integer.'
   if (isNaN(size)) return 'C\'mon, man, just enter a number.'
-  if (size % 1 != 0) return "Triangle size cannot be floating point."
+  if (size % 1 !== 0) return 'Triangle size cannot be floating point.'
   if (size === 0) return 'Triangle size cannot be 0.'
   if (size < 0) return 'Triangle size must be a postiive integer.'
 
