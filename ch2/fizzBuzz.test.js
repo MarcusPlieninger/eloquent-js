@@ -1,5 +1,5 @@
 function fizzBuzz(size) {
-  const fizzBuzzArray = []
+  let fizzBuzzArray = []
 
   for (let counter = 1; counter <= size; counter++) {
     // the test for 3 must precede the test for 5 because Buzz is valid if
@@ -7,13 +7,15 @@ function fizzBuzz(size) {
     if (counter % 3 === 0) {
       console.log('Fizz')
       fizzBuzzArray.push('Fizz')
-      if (counter % 5 === 0) {
-        console.log('Buzz')
-        fizzBuzzArray.push('Buzz')
-      } else {
-        console.log(counter)
-        fizzBuzzArray.push(counter)
-      }
+      continue
+    }
+    if (counter % 5 === 0) {
+      console.log('Buzz')
+      fizzBuzzArray.push('Buzz')
+      continue
+    } else {
+      console.log(counter)
+      fizzBuzzArray.push(counter)
     }
   }
   return fizzBuzzArray
@@ -21,13 +23,15 @@ function fizzBuzz(size) {
 
 describe('small inputs', () => {
   test('5', () => {
-    expect(fizzBuzz(5)).toBe([1, 2, 'Fizz', 4, 'Buzz'])
+    expect(fizzBuzz(5)).toEqual([1, 2, 'Fizz', 4, 'Buzz'])
   })
   test('10', () => {
-    expect(fizzBuzz(10)).toBe([1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz'])
+    expect(fizzBuzz(10)).toEqual(
+      [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz']
+    )
   })
   test('15', () => {
-    expect(fizzBuzz(10)).toBe(
+    expect(fizzBuzz(15)).toEqual(
       [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14, 'Fizz']
     )
   })
