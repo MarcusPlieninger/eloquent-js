@@ -37,7 +37,6 @@ describe('small inputs', () => {
   })
 })
 
-
 describe('large inputs', () => {
   test('50', () => {
     expect(fizzBuzz(50)).toEqual(
