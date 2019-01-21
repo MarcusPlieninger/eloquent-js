@@ -1,45 +1,56 @@
-function triangle2(size) {
+function loopingTriangle2(size) {
   // input validation
-
-  if (!size) return 'Triangle size most be a positive integer.'
   if (isNaN(size)) return 'C\'mon, man, just enter a number.'
+  if (!size) return 'Please enter a p-o-s-i-t-v-e i-n-t-e-g-er.'
   if (size % 1 !== 0) return 'Triangle size cannot be floating point.'
-  if (size === 0) return 'Triangle size cannot be 0.'
-  if (size < 0) return 'Triangle size must be a postiive integer.'
+  if (size < 0) return 'Triangle size must be positive.'
 
-  if (size < 0) {
-    return 'Triangle size must be positive integer.'
-  } if (!(Number.isNaN(size))) {
-    return 'C\'mon, man, just enter a number.'
-  } if (size === 0) {
-    return 'Triangle size cannot be 0.'
-  } if (size % 1 !== 0) {
-    return 'Triangle size cannot be floating-point.'
-  }
-  // once input is validated, loop according to input
   let triangle = ''
-  for (let line = '#'; line.length < size; line += '#') {
-    console.log(line)
+  for (let line = '#'; line.length <= size; line += '#') {
+    //  console.log(line)
     triangle += `${line}\n`
   }
   return triangle
 }
 
-describe('triangle2()', () => {
-  test('if input is not a positive integer', () => {
-    expect(triangle2(-230)).toBe('Triangle size must be a positive integer.')
-    expect(triangle2('Dog')).toBe('C\'mon, man, just enter a number.')
-    expect(triangle2(0)).toBe('Triangle size cannot be 0.')
-    expect(triangle2(false)).toBe('Triangle size must be a positive integer.')
-    expect(triangle2(2.4325)).toBe('Triangle size cannot be floating point.')
+describe('invalid inputs', () => {
+  test('large negative integer', () => {
+    expect(loopingTriangle2(-230)).toBe('Triangle size must be positive.')
   })
 
-  test('small inputs', () => {
-    expect(triangle2(3)).toBe('#\n##\n###\n')
-    expect(triangle2(5)).toBe('#\n##\n###\n####\n#####\n')
+  test('string', () => {
+    expect(loopingTriangle2('Dog')).toBe('C\'mon, man, just enter a number.')
   })
-  test('medium inputs', () => {
-    expect(triangle2(10)).toBe(
+
+  test('empty string', () => {
+    expect(loopingTriangle2('')).toBe('Please enter a p-o-s-i-t-v-e i-n-t-e-g-er.')
+  })
+
+  test('zero', () => {
+    expect(loopingTriangle2(0)).toBe('Please enter a p-o-s-i-t-v-e i-n-t-e-g-er.')
+  })
+
+  test('Boolean', () => {
+    expect(loopingTriangle2(false)).toBe('Please enter a p-o-s-i-t-v-e i-n-t-e-g-er.')
+  })
+
+  test('floating point', () => {
+    expect(loopingTriangle2(2.4325)).toBe('Triangle size cannot be floating point.')
+  })
+})
+
+describe('small inputs', () => {
+  test('3', () => {
+    expect(loopingTriangle2(3)).toBe('#\n##\n###\n')
+  })
+  test('5', () => {
+    expect(loopingTriangle2(5)).toBe('#\n##\n###\n####\n#####\n')
+  })
+})
+
+describe('medium inputs', () => {
+  test('10', () => {
+    expect(loopingTriangle2(10)).toBe(
       '#\n'
       + '##\n'
       + '###\n'
@@ -49,8 +60,11 @@ describe('triangle2()', () => {
       + '#######\n'
       + '########\n'
       + '#########\n'
+      + '##########\n'
     )
-    expect(triangle2(50)).toBe(
+  })
+  test('50', () => {
+    expect(loopingTriangle2(50)).toBe(
       '#\n'
       + '##\n'
       + '###\n'
@@ -100,6 +114,7 @@ describe('triangle2()', () => {
       + '###############################################\n'
       + '################################################\n'
       + '#################################################\n'
+      + '##################################################\n'
     )
   })
 })
