@@ -1,14 +1,34 @@
+function fizzBuzz(size) {
+  const fizzBuzzArray = []
 
-
-
-
-
-
-describe('fizzBuzz()', () => {
-    test('divisible by 3 gets fizz, by 5 buzz, by both fizzbuzz', () => {
-      expect(fizzbuzz()))n.toBe([])
-      })
-    })
+  for (let counter = 1; counter <= size; counter++) {
+    // the test for 3 must precede the test for 5 because Buzz is valid if
+    // and only if the number is not divisible by 3, otherwise Fizz applies
+    if (counter % 3 === 0) {
+      console.log('Fizz')
+      fizzBuzzArray.push('Fizz')
+      if (counter % 5 === 0) {
+        console.log('Buzz')
+        fizzBuzzArray.push('Buzz')
+      } else {
+        console.log(counter)
+        fizzBuzzArray.push(counter)
+      }
+    }
   }
+  return fizzBuzzArray
+}
 
-  //for the expectation object, literally write out the array
+describe('small inputs', () => {
+  test('5', () => {
+    expect(fizzBuzz(5)).toBe([1, 2, 'Fizz', 4, 'Buzz'])
+  })
+  test('10', () => {
+    expect(fizzBuzz(10)).toBe([1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz'])
+  })
+  test('15', () => {
+    expect(fizzBuzz(10)).toBe(
+      [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14, 'Fizz']
+    )
+  })
+})
