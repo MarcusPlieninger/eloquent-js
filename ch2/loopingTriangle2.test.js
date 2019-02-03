@@ -1,6 +1,6 @@
 function loopingTriangle2(size) {
   // input validation
-  if (isNaN(size)) return 'C\'mon, man, just enter a number.'
+  if (Number.isNaN(Number(size))) return 'C\'mon, man, just enter a number.'
   if (!size) return 'Please enter a p-o-s-i-t-v-e i-n-t-e-g-er.'
   if (size % 1 !== 0) return 'Triangle size cannot be floating point.'
   if (size < 0) return 'Triangle size must be positive.'
