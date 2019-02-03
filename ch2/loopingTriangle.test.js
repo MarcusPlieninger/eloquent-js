@@ -2,8 +2,8 @@ function loopingTriangle() {
   // build a triangle as a return value for testing
   let triangle = ''
   for (let line = '#'; line.length < 8; line += '#') {
-    console.log(line) 
-    triangle += line + '\n' 
+    console.log(line)
+    triangle += `${line}\n`
   }
   return triangle
 }
