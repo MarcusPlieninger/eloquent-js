@@ -1,11 +1,11 @@
-function chessboard8x8() {
+function chessboardVariable(width, height) {
   let row = '\n'
   let i
   let j
 
-  for (i = 1; i <= 8; i++) {
+  for (i = 1; i <= height; i++) {
     if (i % 2 !== 0) {
-      for (j = 1; j <= 8; j++) {
+      for (j = 1; j <=width; j++) {
         if (j % 2 !== 0) {
           row += ' '
         } else {
@@ -14,7 +14,7 @@ function chessboard8x8() {
       }
       row += '\n'
     } else {
-      for (j = 1; j <= 8; j++) {
+      for (j = 1; j <= width; j++) {
         if (j % 2 !== 0) {
           row += '#'
         } else {
@@ -27,9 +27,12 @@ function chessboard8x8() {
   return row
 }
 
-describe('simple', () => {
+describe('small inputs', () => {
+  test('3x3', () => {
+    expect(chessboardVariable(3)).toEqual('\n# #\n # \n# #\n')
+  })
   test('8x8', () => {
-    expect(chessboard8x8()).toEqual('\n # # # #\n# # # # \n # # # #\n# # # # \n'
+    expect(chessboardVariable(8, 8)).toEqual('\n # # # #\n# # # # \n # # # #\n# # # # \n'
                                     + ' # # # #\n# # # # \n # # # #\n# # # # \n')
   })
 })
