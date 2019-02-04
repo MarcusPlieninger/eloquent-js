@@ -1,4 +1,9 @@
 function chessboardVariable(width, height) {
+// input validation
+  if (Number.isNaN(Number(size)))
+
+
+
   let row = '\n'
   let i
   let j
@@ -27,12 +32,54 @@ function chessboardVariable(width, height) {
   return row
 }
 
-describe('small inputs', () => {
+describe('invalid inputs', () => {
+  test('string', () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test('empty string', () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test('zero', () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test('negative integer', () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test('floating point', () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test('Boolean', () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+})
+
+describe('small square inputs', () => {
   test('3x3', () => {
     expect(chessboardVariable(3)).toEqual('\n# #\n # \n# #\n')
   })
   test('8x8', () => {
     expect(chessboardVariable(8, 8)).toEqual('\n # # # #\n# # # # \n # # # #\n# # # # \n'
                                     + ' # # # #\n# # # # \n # # # #\n# # # # \n')
+  })
+})
+
+describe('medium square inputs, () => {
+  test('string', () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test('empty string', () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test('zero', () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test('negative integer', () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test('floating point', () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test('Boolean', () => {
+    expect(chessboardVariable()).toEqual('')
   })
 })
