@@ -1,8 +1,7 @@
 function chessboardVariable(width, height) {
 // input validation
-  if (Number.isNaN(Number(size)))
-
-
+// is there a way to apply OR operator here?
+  if width || height (Number.isNaN(Number(size)))
 
   let row = '\n'
   let i
@@ -34,26 +33,34 @@ function chessboardVariable(width, height) {
 
 describe('invalid inputs', () => {
   test('string', () => {
-    expect(chessboardVariable()).toEqual('')
+    expect(chessboardVariable('dog', 5)).toEqual('')
   })
   test('empty string', () => {
-    expect(chessboardVariable()).toEqual('')
+    expect(chessboardVariable(6, '')).toEqual('')
   })
   test('zero', () => {
+    expect(chessboardVariable(0, 10)).toEqual('')
+  })
+  test('negative integer', (5, -3) => {
     expect(chessboardVariable()).toEqual('')
   })
-  test('negative integer', () => {
+  test('floating point', (2.43, 5) => {
     expect(chessboardVariable()).toEqual('')
   })
-  test('floating point', () => {
+  test('Boolean', (10, false) => {
     expect(chessboardVariable()).toEqual('')
   })
-  test('Boolean', () => {
+  test('Infinity', (10, false) => {
     expect(chessboardVariable()).toEqual('')
   })
+  test('Null', (10, false) => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test('Undefined', (10, false) => {
+    expect(chessboardVariable()).toEqual('')
 })
 
-describe('small square inputs', () => {
+describe('small inputs', () => {
   test('3x3', () => {
     expect(chessboardVariable(3)).toEqual('\n# #\n # \n# #\n')
   })
@@ -63,23 +70,44 @@ describe('small square inputs', () => {
   })
 })
 
-describe('medium square inputs, () => {
-  test('string', () => {
+describe('medium inputs', () => {
+  test(, () => {
     expect(chessboardVariable()).toEqual('')
   })
-  test('empty string', () => {
+  test(, () => {
     expect(chessboardVariable()).toEqual('')
   })
-  test('zero', () => {
+  test(, () => {
     expect(chessboardVariable()).toEqual('')
   })
-  test('negative integer', () => {
+  test(, () => {
     expect(chessboardVariable()).toEqual('')
   })
-  test('floating point', () => {
+  test(, () => {
     expect(chessboardVariable()).toEqual('')
   })
-  test('Boolean', () => {
+  test(, () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+})
+
+describe('large inputs', () => {
+  test(, () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test(, () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test(, () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test(, () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test(, () => {
+    expect(chessboardVariable()).toEqual('')
+  })
+  test(, () => {
     expect(chessboardVariable()).toEqual('')
   })
 })
