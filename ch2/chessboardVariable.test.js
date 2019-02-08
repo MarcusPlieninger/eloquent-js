@@ -97,46 +97,55 @@ describe('small inputs', () => {
                                            + ' # \n')
   })
   test('8x8', () => {
-    expect(chessboardVariable(8, 8)).toEqual('\n # # # #\n'
-                                           + '# # # # \n # # # #\n# # # # \n'
-                                    + ' # # # #\n# # # # \n # # # #\n# # # # \n')
+    expect(chessboardVariable(8, 8)).toEqual('\n'
+                                           + ' # # # #\n'
+                                           + '# # # # \n'
+                                           + ' # # # #\n'
+                                           + '# # # # \n'
+                                           + ' # # # #\n'
+                                           + '# # # # \n'
+                                           + ' # # # #\n'
+                                           + '# # # # \n')
   })
 })
 
 describe('medium inputs', () => {
   test('10x2', () => {
-    expect(chessboardVariable(10, 2)).toEqual('\n # # # # # # # # # # \n'
-                                       + '# # # # # # # # # # \n')
+    expect(chessboardVariable(10, 2)).toEqual('\n'
+                                            + ' # # # # #\n'
+                                            + '# # # # # \n')
   })
   test('2x10', () => {
-    expect(chessboardVariable(2, 10)).toEqual('\n # # \n'
-                                       + '# # \n'
-                                       + ' # # \n'
-                                       + '# # \n'
-                                       + ' # # \n'
-                                       + '# # \n'
-                                       + ' # # \n'
-                                       + '# # \n'
-                                       + ' # # \n'
-                                       + '# # \n')
+    expect(chessboardVariable(2, 10)).toEqual('\n'
+                                            + ' #\n'
+                                            + '# \n'
+                                            + ' #\n'
+                                            + '# \n'
+                                            + ' #\n'
+                                            + '# \n'
+                                            + ' #\n'
+                                            + '# \n'
+                                            + ' #\n'
+                                            + '# \n')
   })
 })
 
 describe('large input', () => {
   test('12x14', () => {
-    expect(chessboardVariable(12, 14)).toEqual('\n # # # # # # # # # # # #\n'
-                                             + '# # # # # # # # # # # #\n'
-                                             + ' # # # # # # # # # # # #\n'
-                                             + '# # # # # # # # # # # #\n'
-                                             + ' # # # # # # # # # # # #\n'
-                                             + '# # # # # # # # # # # #\n'
-                                             + ' # # # # # # # # # # # #\n'
-                                             + '# # # # # # # # # # # #\n'
-                                             + ' # # # # # # # # # # # #\n'
-                                             + '# # # # # # # # # # # #\n'
-                                             + ' # # # # # # # # # # # #\n'
-                                             + '# # # # # # # # # # # #\n'
-                                             + ' # # # # # # # # # # # #\n'
-                                             + '# # # # # # # # # # # #\n')
+    expect(chessboardVariable(12, 14)).toEqual('\n'
+                                             + ' # # # # # #\n'
+                                             + '# # # # # # \n'
+                                             + ' # # # # # #\n'
+                                             + '# # # # # # \n'
+                                             + ' # # # # # #\n'
+                                             + '# # # # # # \n'
+                                             + ' # # # # # #\n'
+                                             + '# # # # # # \n'
+                                             + ' # # # # # #\n'
+                                             + '# # # # # # \n'
+                                             + ' # # # # # #\n'
+                                             + '# # # # # # \n'
+                                             + ' # # # # # #\n'
+                                             + '# # # # # # \n')
   })
 })
