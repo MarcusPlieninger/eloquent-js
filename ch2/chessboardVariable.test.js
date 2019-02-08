@@ -1,14 +1,11 @@
 function chessboardVariable(width, height) {
   // input validation - I explain why the order of the if statements matters here
-
+  // first tests for 0 or empty string or false or null or undefined or empty string
   if (!width || !height) return 'Please enter positive integers only.'
-  
-  // first tests for array since isNaN would be positive for an array as well
+  // then tests for array since isNaN would be positive for an array as well
   if (Array.isArray(width) || Array.isArray(height)) return 'Chessboard size cannot be an array.'
-  // then tests for NaN (e.g., String, Boolean, undefined, null)
+  // then tests for NaN (e.g., String, true)
   if (Number.isNaN(Number(width)) || Number.isNaN(Number(height))) return 'Please enter positive integers only.'
-  // then tests for 0 or empty string
-
   // then tests for Infinity since test for floating point would be positive for Infinity as well
   if (width === Infinity || height === Infinity) return 'Chessboard size cannot be infinite.'
   // then tests for floating point number
@@ -61,9 +58,7 @@ describe('invalid inputs', () => {
     expect(chessboardVariable(6, '')).toEqual('Please enter positive integers only.')
   })
   test('zero', () => {
-    expect(chessboardVariable(0, 10)).toEqual(
-      'Chessboard size cannot be empty.'
-    )
+    expect(chessboardVariable(0, 10)).toEqual('Please enter positive integers only.')
   })
   test('negative integer', () => {
     expect(chessboardVariable(5, -3)).toEqual(
@@ -89,32 +84,47 @@ describe('invalid inputs', () => {
 
 describe('small inputs', () => {
   test('2x2', () => {
-    expect(chessboardVariable(3)).toEqual('\n # #\n# # \n')
+    expect(chessboardVariable(2, 2)).toEqual('\n'
+                                           + ' #\n'
+                                           + '# \n')
   })
   test('3x5', () => {
-    expect(chessboardVariable(3)).toEqual('\n# # # \n # # #\n# # # \n # # #\n# # # \n')
+    expect(chessboardVariable(3, 5)).toEqual('\n'
+                                           + ' # \n'
+                                           + '# #\n'
+                                           + ' # \n'
+                                           + '# #\n'
+                                           + ' # \n')
   })
   test('8x8', () => {
-    expect(chessboardVariable(8, 8)).toEqual('\n # # # #\n# # # # \n # # # #\n# # # # \n'
+    expect(chessboardVariable(8, 8)).toEqual('\n # # # #\n'
+                                           + '# # # # \n # # # #\n# # # # \n'
                                     + ' # # # #\n# # # # \n # # # #\n# # # # \n')
   })
 })
 
 describe('medium inputs', () => {
   test('10x2', () => {
-    expect(chessboardVariable()).toEqual('# # # # # # # # # #\n'
-                                       + ' # # # # # # # # # #\n')
+    expect(chessboardVariable(10, 2)).toEqual('\n # # # # # # # # # # \n'
+                                       + '# # # # # # # # # # \n')
   })
   test('2x10', () => {
-    expect(chessboardVariable()).toEqual('# #\n # #\n# #\n # #\n# #\n'
-                                       + ' # #\n# #\n # #\n# #\n # #\n')
+    expect(chessboardVariable(2, 10)).toEqual('\n # # \n'
+                                       + '# # \n'
+                                       + ' # # \n'
+                                       + '# # \n'
+                                       + ' # # \n'
+                                       + '# # \n'
+                                       + ' # # \n'
+                                       + '# # \n'
+                                       + ' # # \n'
+                                       + '# # \n')
   })
 })
 
 describe('large input', () => {
   test('12x14', () => {
-    expect(chessboardVariable(20, 20)).toEqual('# # # # # # # # # # # #\n'
-                                             + ' # # # # # # # # # # # #\n'
+    expect(chessboardVariable(12, 14)).toEqual('\n # # # # # # # # # # # #\n'
                                              + '# # # # # # # # # # # #\n'
                                              + ' # # # # # # # # # # # #\n'
                                              + '# # # # # # # # # # # #\n'
@@ -126,6 +136,7 @@ describe('large input', () => {
                                              + '# # # # # # # # # # # #\n'
                                              + ' # # # # # # # # # # # #\n'
                                              + '# # # # # # # # # # # #\n'
-                                             + ' # # # # # # # # # # # #\n')
+                                             + ' # # # # # # # # # # # #\n'
+                                             + '# # # # # # # # # # # #\n')
   })
 })
