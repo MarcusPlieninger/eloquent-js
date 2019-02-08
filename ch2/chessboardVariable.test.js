@@ -1,17 +1,20 @@
 function chessboardVariable(width, height) {
-// input validation
-// first tests for NaN (e.g., String, Boolean, undefined, null)
+  // input validation - I explain why the order of the if statements matters here
+
+  if (!width || !height) return 'Please enter positive integers only.'
+  
+  // first tests for array since isNaN would be positive for an array as well
+  if (Array.isArray(width) || Array.isArray(height)) return 'Chessboard size cannot be an array.'
+  // then tests for NaN (e.g., String, Boolean, undefined, null)
   if (Number.isNaN(Number(width)) || Number.isNaN(Number(height))) return 'Please enter positive integers only.'
   // then tests for 0 or empty string
-  if (!width || !height) return 'Chessboard size cannot be empty.'
+
+  // then tests for Infinity since test for floating point would be positive for Infinity as well
+  if (width === Infinity || height === Infinity) return 'Chessboard size cannot be infinite.'
   // then tests for floating point number
   if (width % 1 !== 0 || height % 1 !== 0) return 'Chessboard size cannot be floating point.'
   // then tests for negative numbers
   if (width < 0 || height < 0) return 'Chessboard size cannot be negative.'
-  // then tests for Infinity
-  if (width === Infinity || height === Infinity) return 'Chessboard size cannot be infinite.'
-  // then tests for array
-  if (Array.isArray(width) || Array.isArray(height)) return 'Chessboard size cannot be an array.'
 
   let row = '\n'
   let i
@@ -55,9 +58,7 @@ describe('invalid inputs', () => {
     expect(chessboardVariable(10, undefined)).toEqual('Please enter positive integers only.')
   })
   test('empty string', () => {
-    expect(chessboardVariable(6, '')).toEqual(
-      'Chessboard size cannot be empty.'
-    )
+    expect(chessboardVariable(6, '')).toEqual('Please enter positive integers only.')
   })
   test('zero', () => {
     expect(chessboardVariable(0, 10)).toEqual(
