@@ -6,7 +6,7 @@ function chessboardVariable(width, height) {
   if (Array.isArray(width) || Array.isArray(height)) return 'Chessboard size cannot be an array.'
   // then tests for NaN (e.g., String, true)
   if (Number.isNaN(Number(width)) || Number.isNaN(Number(height))) return 'Please enter positive integers only.'
-  // then tests for Infinity since if statement for floating point would evaluate to NaN for Infinity as well
+  // then tests for Infinity (if statement for floating point evaluates to NaN for Infinity as well)
   if (width === Infinity || height === Infinity) return 'Chessboard size cannot be infinite.'
   // then tests for floating point number
   if (width % 1 !== 0 || height % 1 !== 0) return 'Chessboard size cannot be floating point.'
