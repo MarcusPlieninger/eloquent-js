@@ -4,6 +4,6 @@ function countBs(theString) {
     if (theString[i] === 'B') {
       counter++
     }
-    return counter
   }
+  return counter
 }
