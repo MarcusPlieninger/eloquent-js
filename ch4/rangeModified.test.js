@@ -5,7 +5,7 @@ function rangeModified(start, end, step = 1) {
       rangeArray.push(i)
     }
   } else if (start > end) {
-    for (let i = start; i >= end; i += step) {
+    for (let i = start; i >= end; i -= step) {
       rangeArray.push(i)
     }
   }
