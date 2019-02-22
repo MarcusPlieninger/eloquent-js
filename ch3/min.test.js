@@ -3,13 +3,13 @@ function min(input1, input2) {
   // then tests for array since isNaN would be positive for an array as well
   if (Array.isArray(input1) || Array.isArray(input2)) return 'Input cannot be an array.'
   // then tests for NaN (e.g., String, true)
-  if (Number.isNaN(Number(input1)) || Number.isNaN(Number(input2))) return 'Please enter a number or floating point.'
+  if (input1 === 0 || input2 === 0) 'Nothing comes from nothing: 0 is the minimum.'
+  if (!input1 || !input2) return 'Please enter a number or floating point.'
+  if (Number.isNaN(input1) || Number.isNaN(input2)) return 'Please enter a number or floating point.'
   if (input1 === '' || input2 === '') return 'Please enter a number or floating point.'
 
-  if (input1 < input2) {
-    return input2
-  }
-  return input1
+  if (input1 < input2) return input1
+  return input2
 }
 
 describe('invalid inputs', () => {
