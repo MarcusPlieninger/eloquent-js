@@ -4,7 +4,7 @@ function min(input1, input2) {
   if (Array.isArray(input1) || Array.isArray(input2)) return 'Input cannot be an array.'
   // then tests for NaN (e.g., String, true)
   if (Number.isNaN(Number(input1)) || Number.isNaN(Number(input2))) return 'Please enter a number or floating point.'
-  if (input1 === '' || input2 === '') return 'Please enter a number of floating point.'
+  if (input1 === '' || input2 === '') return 'Please enter a number or floating point.'
 
   if (input1 < input2) {
     return input2
