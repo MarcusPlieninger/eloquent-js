@@ -1,12 +1,13 @@
 function min(input1, input2) {
   // input validation - I explain why the order of the if statements matters here
-  // then tests for array since isNaN would be positive for an array as well
+  // first tests for array since isNaN would be positive for an array as well
   if (Array.isArray(input1) || Array.isArray(input2)) return 'Input cannot be an array.'
-  // then tests for NaN (e.g., String, true)
-  if (input1 === 0 || input2 === 0) 'Nothing comes from nothing: 0 is the minimum.'
-  if (!input1 || !input2) return 'Please enter a number or floating point.'
-  if (Number.isNaN(input1) || Number.isNaN(input2)) return 'Please enter a number or floating point.'
-  if (input1 === '' || input2 === '') return 'Please enter a number or floating point.'
+  // then tests for values that are or coerce to false (eg, false, empty string, so that their negation makes them true,
+  // provided that the inputs are not 0, since 0 is a valid input
+  if ((!input1 || !input2) && (input1 !== 0 && input2 !== 0)) {
+    return 'Please enter an integer or floating point.'
+  } // then tests for NaN
+  if (Number.isNaN(input1) || Number.isNaN(input2)) return 'Please enter a number or floating point2.'
 
   if (input1 < input2) return input1
   return input2
@@ -14,15 +15,16 @@ function min(input1, input2) {
 
 describe('invalid inputs', () => {
   test('string', () => {
-    expect(min('Dog', 5)).toBe('Please enter a number or floating point.')
+    expect(min('Dog', 5)).toBe('Please enter an integer or floating point.')
   })
-
   test('empty string', () => {
-    expect(min(10, '')).toBe('Please enter a number or floating point.')
+    expect(min(10, '')).toBe('Please enter an integer or floating point.')
   })
-
-  test('Boolean', () => {
-    expect(min(false, 20)).toBe('Please enter a number or floating point.')
+  test('Boolean false', () => {
+    expect(min(false, 20)).toBe('Please enter an integer or floating point.')
+  })
+  test('Boolean true', () => {
+    expect(min(20, true)).toBe('Please enter an integer or floating point.')
   })
   test('Array', () => {
     expect(min([1, 2, 3, 4, 5], 20)).toBe('Input cannot be an array.')
@@ -33,8 +35,11 @@ describe('small inputs', () => {
   test('negative', () => {
     expect(min(-4, 5)).toBe(-4)
   })
-  test('zero', () => {
+  test('zero and positive integer', () => {
     expect(min(5, 0)).toBe(0)
+  })
+  test('zeros', () => {
+    expect(min(0, 0)).toBe(0)
   })
   test('floating point', () => {
     expect(min(1.432534, 2)).toBe(1.432534)
