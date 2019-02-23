@@ -8,7 +8,7 @@ function min(input1, input2) {
     return 'Please enter an integer or floating point.'
   } // then tests for NaN
   if (Number.isNaN(Number(input1)) || Number.isNaN(Number(input2))) return 'Please, only integer or floating point.'
-  // finally, tests for either of the inputs being the Boolean primitive true
+  // finally, tests for either of the inputs being the Boolean primitive value of true
   if ((input1 === true) || (input2 === true)) return 'True is not a valid input. Please enter an integer or floating point.'
 
   if (input1 < input2) return input1
