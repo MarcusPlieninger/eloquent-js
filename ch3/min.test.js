@@ -2,8 +2,8 @@ function min(input1, input2) {
   // input validation - I explain why the order of the if statements matters here
   // first tests for array since isNaN would be positive for an array as well
   if (Array.isArray(input1) || Array.isArray(input2)) return 'Input cannot be an array.'
-  // then tests for values that are or coerce to false (eg, false, empty string, so that their negation makes them true,
-  // provided that the inputs are not 0, since 0 is a valid input
+  // then tests for values that are or coerce to false (eg, false, empty string, so that their 
+  // negation makes them true, provided that the inputs are not 0, since 0 is a valid input
   if ((!input1 || !input2) && (input1 !== 0 && input2 !== 0)) {
     return 'Please enter an integer or floating point.'
   } // then tests for NaN
