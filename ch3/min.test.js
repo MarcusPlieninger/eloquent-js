@@ -7,7 +7,9 @@ function min(input1, input2) {
   if ((!input1 || !input2) && (input1 !== 0 && input2 !== 0)) {
     return 'Please enter an integer or floating point.'
   } // then tests for NaN
-  if (Number.isNaN(input1) || Number.isNaN(input2)) return 'Please enter a number or floating point2.'
+  if (Number.isNaN(Number(input1)) || Number.isNaN(Number(input2))) return 'Please, only integer or floating point.'
+  // finally, tests for either of the inputs being the Boolean primitive true
+  if ((input1 === true) || (input2 === true)) return 'True is not a valid input. Please enter an integer or floating point.'
 
   if (input1 < input2) return input1
   return input2
@@ -15,7 +17,7 @@ function min(input1, input2) {
 
 describe('invalid inputs', () => {
   test('string', () => {
-    expect(min('Dog', 5)).toBe('Please enter an integer or floating point.')
+    expect(min('Dog', 5)).toBe('Please, only integer or floating point.')
   })
   test('empty string', () => {
     expect(min(10, '')).toBe('Please enter an integer or floating point.')
@@ -24,7 +26,7 @@ describe('invalid inputs', () => {
     expect(min(false, 20)).toBe('Please enter an integer or floating point.')
   })
   test('Boolean true', () => {
-    expect(min(20, true)).toBe('Please enter an integer or floating point.')
+    expect(min(20, true)).toBe('True is not a valid input. Please enter an integer or floating point.')
   })
   test('Array', () => {
     expect(min([1, 2, 3, 4, 5], 20)).toBe('Input cannot be an array.')
