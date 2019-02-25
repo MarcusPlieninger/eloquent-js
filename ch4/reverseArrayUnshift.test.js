@@ -6,7 +6,7 @@ function reverseArrayUnshift(arrayInput) {
   return newArray
 }
 
-describe('test taken from text', () => {
+describe('tests taken from text', () => {
   test('["A", "B", "C"]', () => {
     expect(reverseArrayUnshift(['A', 'B', 'C'])).toEqual(['C', 'B', 'A'])
   })
