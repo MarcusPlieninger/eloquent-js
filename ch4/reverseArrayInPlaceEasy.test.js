@@ -12,4 +12,3 @@ describe('tests taken from text', () => {
     )
   })
 })
-
