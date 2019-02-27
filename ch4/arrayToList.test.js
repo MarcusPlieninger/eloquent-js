@@ -1,5 +1,7 @@
 function arrayToList(arrayInput) {
-  const list = {}
+  if (arrayInput.length === 0) return {}
+  
+  const list = { rest: null }
   for (const entry of arrayInput) {
     list.value = entry
   }
