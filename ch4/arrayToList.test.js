@@ -1,4 +1,4 @@
-function arraytoList(arrayInput) {
+function arrayToList(arrayInput) {
   const list = {}
   for (const entry of arrayInput) {
     list.value = entry
@@ -8,6 +8,9 @@ function arraytoList(arrayInput) {
 
 describe('arrayToList()', () => {
   test('empty array', () => {
-    expect(arraytoList([])).toEqual({})
+    expect(arrayToList([])).toEqual({})
+  })
+  test('array with 1 value', () => {
+    expect(arrayToList([3])).toEqual({ rest: null, value: 3 })
   })
 })
