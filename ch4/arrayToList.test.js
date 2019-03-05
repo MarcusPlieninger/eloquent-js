@@ -2,7 +2,7 @@ function arrayToList(arrayInput) {
   const list = {}
   let rest = null
 
-  for (let i = list.length; i > 0; i--) {
+  for (let i = arrayInput.length; i > 0; i--) {
     list.rest = rest
     list.value = arrayInput[i - 1]
     rest = Object.assign({}, list)
