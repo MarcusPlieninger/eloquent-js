@@ -1,7 +1,7 @@
 function listToArray(listInput) {
   const arrayOutput = []
   while ('value' in listInput) {
-    arrayOutput.push(listInput.value) 
+    arrayOutput.push(listInput.value)
     listInput = Object.assign({}, listInput.rest)
   }
   return arrayOutput
