@@ -1,9 +1,8 @@
 function listToArray(listInput) {
   const arrayOutput = []
   while ('value' in listInput) {
-    arrayOutput.push(listInput.value)
-    delete listInput.value
-    listInput = listInput.rest
+    arrayOutput.push(listInput.value) 
+    listInput = Object.assign({}, listInput.rest)
   }
   return arrayOutput
 }
