@@ -7,6 +7,13 @@ function listToArray(inputList) {
   return outputArray
 }
 
+function prepend(element, inputList) {
+  const outputList = {}
+  outputList.value = element
+  outputList.rest = Object.assign({}, inputList)
+  return outputList
+}
+
 describe('listToArray()', () => {
   test('empty list', () => {
     expect(listToArray({})).toEqual([])
@@ -15,14 +22,25 @@ describe('listToArray()', () => {
     expect(listToArray({ value: 3, rest: null })).toEqual([3])
   })
   test('list with 3 values', () => {
-    expect(listToArray([1, 3, 5])).toEqual(
+    expect(listToArray({ value: 1, rest: { value: 3, rest: { value: 5, rest: null } } })).toEqual(
+      [1, 3, 5]
+    )
+  })
+})
+
+describe('prepend()', () => {
+  test('prepend 1 element to list with 3 values', () => {
+    expect(prepend(10, { value: 1, rest: { value: 3, rest: { value: 5, rest: null } } })).toEqual(
       {
-        value : 1,
+        value : 10,
         rest  : {
-          value : 3,
+          value : 1,
           rest  : {
-            value : 5,
-            rest  : null
+            value : 3,
+            rest  : {
+              value : 5,
+              rest  : null
+            }
           }
         }
       }
