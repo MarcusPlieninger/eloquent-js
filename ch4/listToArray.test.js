@@ -1,10 +1,10 @@
-function listToArray(listInput) {
-  const arrayOutput = []
-  while ('value' in listInput) {
-    arrayOutput.push(listInput.value)
-    listInput = Object.assign({}, listInput.rest)
+function listToArray(inputList) {
+  const outputArray = []
+  while ('value' in inputList) {
+    outputArray.push(inputList.value)
+    inputList = Object.assign({}, inputList.rest)
   }
-  return arrayOutput
+  return outputArray
 }
 
 describe('listToArray()', () => {
