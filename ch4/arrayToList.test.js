@@ -1,13 +1,13 @@
-function arrayToList(arrayInput) {
-  const list = {}
+function arrayToList(inputArray) {
+  const outputList = {}
   let rest = null
 
-  for (let i = arrayInput.length; i > 0; i--) {
-    list.rest = rest
-    list.value = arrayInput[i - 1]
-    rest = Object.assign({}, list)
+  for (let i = inputArray.length; i > 0; i--) {
+    outputList.rest = rest
+    outputList.value = inputArray[i - 1]
+    rest = Object.assign({}, outputList)
   }
-  return list
+  return outputList
 }
 
 describe('arrayToList()', () => {
