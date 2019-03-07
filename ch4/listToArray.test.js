@@ -14,6 +14,14 @@ function prepend(element, inputList) {
   return outputList
 }
 
+function nth(element, inputList) {
+  let i = 0
+  if (inputList.value === element) return i
+  i++
+  nth(element, inputList.rest)
+  return 'The element is not in the list.'
+}
+
 describe('listToArray()', () => {
   test('empty list', () => {
     expect(listToArray({})).toEqual([])
@@ -45,5 +53,14 @@ describe('prepend()', () => {
         }
       }
     )
+  })
+})
+
+describe('nth()', () => {
+  test('empty list', () => {
+    expect(nth({}, 5)).toBe('The element is not in the list.')
+  })
+  test('3-element list', () => {
+    expect(nth({ value: 1, rest: { value: 3, rest: { value: 5, rest: null } } }, 5)).toBe(2)
   })
 })
