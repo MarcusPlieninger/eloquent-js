@@ -6,7 +6,6 @@ function nthRecursive(inputList, element) {
   nthRecursive(inputList.rest, element)
 }
 
-
 describe('nthRecursive()', () => {
   test('empty list', () => {
     expect(nthRecursive({}, 5)).toBe('The element is not in the list.')
