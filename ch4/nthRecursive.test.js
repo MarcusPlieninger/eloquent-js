@@ -1,16 +1,11 @@
-function nthRecursive(inputList, element) {
-  let i = 0
-  if ('value' in inputList === false) return 'The element is not in the list.'
-  if (inputList.value === element) return i
-  i++
-  nthRecursive(inputList.rest, element)
+function nthRecursive(inputList, element, counter = 0) {
+  if (inputList === null) return inputList
+  if (inputList.value === element) return counter
+  nthRecursive(inputList.rest, element, counter++)
 }
 
 describe('nthRecursive()', () => {
-  test('empty list', () => {
-    expect(nthRecursive({}, 5)).toBe('The element is not in the list.')
-  })
-  test('3-element list', () => {
+  test('3-element list, property in list', () => {
     expect(nthRecursive(
       {
         value : 1,
@@ -24,6 +19,22 @@ describe('nthRecursive()', () => {
            }
          }
       }, 5
-    )).toBe(2)
+    )).toEqual(2)
+  })
+  test('3-element list, property not in list', () => {
+    expect(nthRecursive(
+      {
+        value : 1,
+        rest  :
+         {
+           value : 3,
+           rest  :
+           {
+             value : 5,
+             rest  : null
+           }
+         }
+      }, 7
+    )).toBeUndefined
   })
 })
