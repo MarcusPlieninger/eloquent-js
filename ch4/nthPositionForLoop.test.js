@@ -1,15 +1,15 @@
 function nthPositionForLoop(inputList, position) {
-  if inputList.value === undefined return undefined 
+  if (inputList.value === undefined) return undefined
   for (let node = inputList; node; node = node.rest) {
-    if (postion === 0) return position
+    if (position === 0) return node.value
     if (node === null) return node
     position--
   }
 }
 
-// easier way is to convert list to array and then use indexOf method to find the element
-function nthElementForLoopEasy(inputList, element) {
-  const position = listToArrayForLoop(inputList).indexOf(element)
+// easier way is to convert list to array and then return the index of the array
+function nthPostionForLoopEasy(inputList, position) {
+  const inputListAsArray = listToArrayForLoop(inputList)
   // indexOf returns -1 if the element is not in the array, hence this conditional statement
   if (position === -1) return undefined
   return position
@@ -23,9 +23,9 @@ function listToArrayForLoop(inputList) {
   return outputArray
 }
 
-describe('nthElementForLoop()', () => {
-  test('3-element list, property in list', () => {
-    expect(nthElementForLoop(
+describe('nthPostionForLoop()', () => {
+  test('3-element list, position in range', () => {
+    expect(nthPositionForLoop(
       {
         value : 1,
         rest  :
@@ -37,11 +37,11 @@ describe('nthElementForLoop()', () => {
              rest  : null
            }
          }
-      }, 5
-    )).toBe(2)
+      }, 2
+    )).toBe(5)
   })
   test('3-element list, property not in list', () => {
-    expect(nthElementForLoop(
+    expect(nthPositionForLoop(
       {
         value : 1,
         rest  :
@@ -58,9 +58,9 @@ describe('nthElementForLoop()', () => {
   })
 })
 
-describe('nthElementForLoopEasy()', () => {
+/* describe('nthPostionForLoopEasy()', () => {
   test('3-element list, property in list', () => {
-    expect(nthElementForLoopEasy(
+    expect(nthPostionForLoopEasy(
       {
         value : 1,
         rest  :
@@ -76,7 +76,7 @@ describe('nthElementForLoopEasy()', () => {
     )).toBe(2)
   })
   test('3-element list, property not in list', () => {
-    expect(nthElementForLoopEasy(
+    expect(nthPostionForLoopEasy(
       {
         value : 1,
         rest  :
@@ -91,4 +91,4 @@ describe('nthElementForLoopEasy()', () => {
       }, 7
     )).toBe(undefined)
   })
-})
+}) */
