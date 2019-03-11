@@ -11,8 +11,8 @@ function nthPositionForLoop(inputList, position) {
 function nthPostionForLoopEasy(inputList, position) {
   const inputListAsArray = listToArrayForLoop(inputList)
   // indexOf returns -1 if the element is not in the array, hence this conditional statement
-  if (position === -1) return undefined
-  return position
+  if (position <= inputListAsArray.length && position >= 0) return inputListAsArray[position]
+  return undefined
 }
 
 function listToArrayForLoop(inputList) {
@@ -40,7 +40,7 @@ describe('nthPostionForLoop()', () => {
       }, 2
     )).toBe(5)
   })
-  test('3-element list, property not in list', () => {
+  test('3-element list, position not in range', () => {
     expect(nthPositionForLoop(
       {
         value : 1,
@@ -58,7 +58,7 @@ describe('nthPostionForLoop()', () => {
   })
 })
 
-/* describe('nthPostionForLoopEasy()', () => {
+describe('nthPostionForLoopEasy()', () => {
   test('3-element list, property in list', () => {
     expect(nthPostionForLoopEasy(
       {
@@ -72,10 +72,10 @@ describe('nthPostionForLoop()', () => {
              rest  : null
            }
          }
-      }, 5
-    )).toBe(2)
+      }, 2
+    )).toBe(5)
   })
-  test('3-element list, property not in list', () => {
+  test('3-element list, position not in range', () => {
     expect(nthPostionForLoopEasy(
       {
         value : 1,
@@ -91,4 +91,4 @@ describe('nthPostionForLoop()', () => {
       }, 7
     )).toBe(undefined)
   })
-}) */
+})
