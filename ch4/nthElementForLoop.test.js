@@ -1,15 +1,15 @@
-function nthForLoop(inputList, element) {
-  let counter = 0
+function nthElementForLoop(inputList, element) {
+  let position = 0
   for (let node = inputList; node; node = node.rest) {
-    if (node.value === element) return counter
+    if (node.value === element) return position
     if (node === null) return node
-    counter++
+    position++
   }
 }
 
-describe('nthForLoop()', () => {
+describe('nthElementForLoop()', () => {
   test('3-element list, property in list', () => {
-    expect(nthForLoop(
+    expect(nthElementForLoop(
       {
         value : 1,
         rest  :
@@ -25,7 +25,7 @@ describe('nthForLoop()', () => {
     )).toBe(2)
   })
   test('3-element list, property not in list', () => {
-    expect(nthForLoop(
+    expect(nthElementForLoop(
       {
         value : 1,
         rest  :
