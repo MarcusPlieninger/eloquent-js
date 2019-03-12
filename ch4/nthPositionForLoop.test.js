@@ -1,5 +1,5 @@
 function nthPositionForLoop(inputList, position) {
-  if (inputList.value === undefined) return undefined
+  if (inputList === undefined) return undefined
   for (let node = inputList; node; node = node.rest) {
     if (position === 0) return node.value
     if (node === null) return node
