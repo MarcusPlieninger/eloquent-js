@@ -1,15 +1,12 @@
-function nthPositionForLoop(inputList, position) {
-  if (inputList.value === undefined) return undefined
-  for (let node = inputList; node; node = node.rest) {
-    if (position === 0) return node.value
-    if (node === null) return node
-    position--
-  }
+function nthPositionRecursive(inputList, position) {
+  if (position === 0) return inputList.value
+  if (inputList.rest === undefined) return undefined
+  nthPositionRecursive(inputList.rest, position--)
 }
 
 // easier way is to convert list to array and then return the index of the array
-function nthPostionForLoopEasy(inputList, position) {
-  const inputListAsArray = listToArrayForLoop(inputList)
+function nthPostionRecursiveEasy(inputList, position) {
+  const inputListAsArray = listToArrayRecursive(inputList)
   // indexOf returns -1 if the element is not in the array, hence this conditional statement
   if (position <= inputListAsArray.length && position >= 0) return inputListAsArray[position]
   return undefined
@@ -23,9 +20,9 @@ function listToArrayForLoop(inputList) {
   return outputArray
 }
 
-describe('nthPostionForLoop()', () => {
+describe('nthPostionRecursive()', () => {
   test('3-element list, position in range', () => {
-    expect(nthPositionForLoop(
+    expect(nthPositionRecursive(
       {
         value : 1,
         rest  :
@@ -41,7 +38,7 @@ describe('nthPostionForLoop()', () => {
     )).toBe(5)
   })
   test('3-element list, position not in range', () => {
-    expect(nthPositionForLoop(
+    expect(nthPositionRecursive(
       {
         value : 1,
         rest  :
@@ -58,9 +55,9 @@ describe('nthPostionForLoop()', () => {
   })
 })
 
-describe('nthPostionForLoopEasy()', () => {
+describe('nthPostionRecursiveEasy()', () => {
   test('3-element list, property in list', () => {
-    expect(nthPostionForLoopEasy(
+    expect(nthPostionRecursiveEasy(
       {
         value : 1,
         rest  :
@@ -76,7 +73,7 @@ describe('nthPostionForLoopEasy()', () => {
     )).toBe(5)
   })
   test('3-element list, position not in range', () => {
-    expect(nthPostionForLoopEasy(
+    expect(nthPostionRecursiveEasy(
       {
         value : 1,
         rest  :
