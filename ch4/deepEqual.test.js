@@ -2,6 +2,9 @@ function deepEqual(obj1, obj2) {
   if (typeof (obj1) !== 'object' || typeof (obj1) !== 'object' || obj1 === null || obj2 === null) {
     return obj1 === obj2
   }
+  if ((Object.keys(obj1).length) !== (Object.keys(obj2).length)) {
+    return false
+  }
 }
 
 describe('inputs that are not objects', () => {
@@ -29,4 +32,10 @@ describe('inputs that are not objects', () => {
     expect(deepEqual( , ).toBe()
     expect(deepEqual( , ).toBe()
   }) */
+})
+
+describe('objects', () => {
+  test('objects of unequal length', () => {
+    expect(deepEqual({ a: 1, b: 2 }, { a: 2, b: 5, c: 4 })).toBe(false)
+  })
 })
