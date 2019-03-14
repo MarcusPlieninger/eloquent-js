@@ -32,7 +32,7 @@ describe('inputs that are not objects', () => {
   })
 })
 
-describe('objects', () => {
+describe('inputs that are objects', () => {
   test('objects of unequal length', () => {
     expect(deepEqual({ a: 1, b: 2 }, { a: 2, b: 5, c: 4 })).toEqual(false)
   })
