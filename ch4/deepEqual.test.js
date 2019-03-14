@@ -5,6 +5,9 @@ function deepEqual(obj1, obj2) {
   if ((Object.keys(obj1).length) !== (Object.keys(obj2).length)) {
     return false
   }
+  for (const key in obj1) {
+  
+  }
 }
 
 describe('inputs that are not objects', () => {
@@ -28,10 +31,6 @@ describe('inputs that are not objects', () => {
     expect(deepEqual('cat', 'dog')).toBe(false)
     expect(deepEqual('cat', 'cat')).toBe(true)
   })
-/*   test('symbol', () => {
-    expect(deepEqual( , ).toBe()
-    expect(deepEqual( , ).toBe()
-  }) */
 })
 
 describe('objects', () => {
