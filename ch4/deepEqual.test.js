@@ -6,35 +6,40 @@ function deepEqual(obj1, obj2) {
     return false
   }
   for (const key in obj1) {
-  
   }
 }
 
 describe('inputs that are not objects', () => {
   test('Boolean', () => {
-    expect(deepEqual(true, false)).toBe(false)
-    expect(deepEqual(true, 3)).toBe(false)
+    expect(deepEqual(true, false)).toEqual(false)
+    expect(deepEqual(true, 3)).toEqual(false)
   })
   test('null', () => {
-    expect(deepEqual(null, null)).toBe(true)
-    expect(deepEqual(null, 3)).toBe(false)
+    expect(deepEqual(null, null)).toEqual(true)
+    expect(deepEqual(null, 3)).toEqual(false)
   })
   test('undefined', () => {
-    expect(deepEqual(undefined, undefined)).toBe(true)
-    expect(deepEqual(undefined, 'cat')).toBe(false)
+    expect(deepEqual(undefined, undefined)).toEqual(true)
+    expect(deepEqual(undefined, 'cat')).toEqual(false)
   })
   test('number', () => {
-    expect(deepEqual(3, 4)).toBe(false)
-    expect(deepEqual(5, 5)).toBe(true)
+    expect(deepEqual(3, 4)).toEqual(false)
+    expect(deepEqual(5, 5)).toEqual(true)
   })
   test('string', () => {
-    expect(deepEqual('cat', 'dog')).toBe(false)
-    expect(deepEqual('cat', 'cat')).toBe(true)
+    expect(deepEqual('cat', 'dog')).toEqual(false)
+    expect(deepEqual('cat', 'cat')).toEqual(true)
   })
 })
 
 describe('objects', () => {
   test('objects of unequal length', () => {
-    expect(deepEqual({ a: 1, b: 2 }, { a: 2, b: 5, c: 4 })).toBe(false)
+    expect(deepEqual({ a: 1, b: 2 }, { a: 2, b: 5, c: 4 })).toEqual(false)
+  })
+  test('deep comparison examples from text', () => {
+    const obj = { here: { is: 'an' }, object: 2 }
+    expect(deepEqual(obj, obj)).toEqual(true)
+    expect(deepEqual(obj, { here: 1, object: 2 })).toEqual(false)
+    expect(deepEqual(obj, { here: { is: 'an' }, object: 2 })).toEqual(true)
   })
 })
