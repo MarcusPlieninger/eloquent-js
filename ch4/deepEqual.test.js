@@ -10,6 +10,7 @@ function deepEqual(obj1, obj2) {
       if (!(key in obj2) || deepEqual(obj1.key, obj2.key)) {
         return false
       }
+    }
   }
 }
 
@@ -46,6 +47,7 @@ describe('inputs that are objects', () => {
     expect(deepEqual(obj, { here: 1, object: 2 })).toBe(false)
     expect(deepEqual(obj, { here: { is: 'an' }, object: 2 })).toBe(true)
   })
+// use deep copy here to manipulate objects for test cases
   test('objects 1 to multiple layers deep', () => {
     const obj = { here: { is: 'an' }, object: 2 }
     expect(deepEqual(obj, obj)).toBe(true)
@@ -58,3 +60,18 @@ describe('inputs that are objects', () => {
     expect(deepEqual(obj, { here: 1, object: 2 })).toBe(false)
     expect(deepEqual(obj, { here: { is: 'an' }, object: 2 })).toBe(true)
   })
+})
+
+/* 
+Sources used for this solution:
+Raymond Gan's comments:
+https://linkedin-jr-engineers.slack.com/archives/CDGH3LF2B/p1539795977000100
+== vs ===: 
+https://codeburst.io/javascript-double-equals-vs-triple-equals-61d4ce5a121a
+Copying objects:
+https://scotch.io/bar-talk/copying-objects-in-javascript
+Object.prototype.hasOwnProperty.call():
+https://stackoverflow.com/a/1963179/2175188
+https://eslint.org/docs/rules/no-prototype-builtins
+https://github.com/eslint/eslint/issues/7071
+*/
