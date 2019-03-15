@@ -1,5 +1,5 @@
 function deepEqual(obj1, obj2) {
-  if (typeof (obj1) !== 'object' || typeof (obj1) !== 'object' || obj1 === null || obj2 === null) {
+  if (typeof (obj1) !== 'object' || typeof (obj2) !== 'object' || obj1 === null || obj2 === null) {
     return obj1 === obj2
   }
   if ((Object.keys(obj1).length) !== (Object.keys(obj2).length)) {
