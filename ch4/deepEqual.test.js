@@ -6,40 +6,55 @@ function deepEqual(obj1, obj2) {
     return false
   }
   for (const key in obj1) {
+    if (Object.prototype.hasOwnProperty.call(obj1, key)) {
+      if (!(key in obj2) || deepEqual(obj1.key, obj2.key)) {
+        return false
+      }
   }
 }
 
 describe('inputs that are not objects', () => {
   test('Boolean', () => {
-    expect(deepEqual(true, false)).toEqual(false)
-    expect(deepEqual(true, 3)).toEqual(false)
+    expect(deepEqual(true, false)).toBe(false)
+    expect(deepEqual(true, 3)).toBe(false)
   })
   test('null', () => {
-    expect(deepEqual(null, null)).toEqual(true)
-    expect(deepEqual(null, 3)).toEqual(false)
+    expect(deepEqual(null, null)).toBe(true)
+    expect(deepEqual(null, 3)).toBe(false)
   })
   test('undefined', () => {
-    expect(deepEqual(undefined, undefined)).toEqual(true)
-    expect(deepEqual(undefined, 'cat')).toEqual(false)
+    expect(deepEqual(undefined, undefined)).toBe(true)
+    expect(deepEqual(undefined, 'cat')).toBe(false)
   })
   test('number', () => {
-    expect(deepEqual(3, 4)).toEqual(false)
-    expect(deepEqual(5, 5)).toEqual(true)
+    expect(deepEqual(3, 4)).toBe(false)
+    expect(deepEqual(5, 5)).toBe(true)
   })
   test('string', () => {
-    expect(deepEqual('cat', 'dog')).toEqual(false)
-    expect(deepEqual('cat', 'cat')).toEqual(true)
+    expect(deepEqual('cat', 'dog')).toBe(false)
+    expect(deepEqual('cat', 'cat')).toBe(true)
   })
 })
 
 describe('inputs that are objects', () => {
   test('objects of unequal length', () => {
-    expect(deepEqual({ a: 1, b: 2 }, { a: 2, b: 5, c: 4 })).toEqual(false)
+    expect(deepEqual({ a: 1, b: 2 }, { a: 2, b: 5, c: 4 })).toBe(false)
   })
-  test('deep comparison examples from text', () => {
+  test('examples from text', () => {
     const obj = { here: { is: 'an' }, object: 2 }
-    expect(deepEqual(obj, obj)).toEqual(true)
-    expect(deepEqual(obj, { here: 1, object: 2 })).toEqual(false)
-    expect(deepEqual(obj, { here: { is: 'an' }, object: 2 })).toEqual(true)
+    expect(deepEqual(obj, obj)).toBe(true)
+    expect(deepEqual(obj, { here: 1, object: 2 })).toBe(false)
+    expect(deepEqual(obj, { here: { is: 'an' }, object: 2 })).toBe(true)
   })
-})
+  test('objects 1 to multiple layers deep', () => {
+    const obj = { here: { is: 'an' }, object: 2 }
+    expect(deepEqual(obj, obj)).toBe(true)
+    expect(deepEqual(obj, { here: 1, object: 2 })).toBe(false)
+    expect(deepEqual(obj, { here: { is: 'an' }, object: 2 })).toBe(true)
+  })
+  test('object multiple layers deep', () => {
+    const obj = { here: { is: 'an' }, object: 2 }
+    expect(deepEqual(obj, obj)).toBe(true)
+    expect(deepEqual(obj, { here: 1, object: 2 })).toBe(false)
+    expect(deepEqual(obj, { here: { is: 'an' }, object: 2 })).toBe(true)
+  })
