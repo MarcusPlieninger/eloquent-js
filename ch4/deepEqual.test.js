@@ -1,3 +1,48 @@
+/* This function first tests for strict equality, on the condition that the inputs are not objects.
+The disjunctive conditional statment includes a test for null.
+
+This is because, while null is a primitive value that 'represents the intentional absence of any
+object value', a legacy quirk (aka 'design error' aka bug) of JavaScript is that typeof(null)
+returns object. This is because, in its first implementation, JavaScript used 0 as the type tag for
+an object. But, 0 was also used as the pointer for null.
+
+The opening conditional statement is not true, then the inputs must be objects.
+
+An obvious way to check for inequality off the bat is to check the length of the array return by
+Object.keys() for each object. If the next conditional statement is true, that is, if it is true
+that the lengths of the arrays containing the respective keys for each object are unequal, then
+the function will return false.
+
+Easy peasy.
+
+But this is where it gets tricky: If the lengths are the same, we need to compare both the key
+and the value for each object.
+
+How do we do this?
+
+In general terms, we need to pick one of the objects to loop through, in this case it's obj1. The
+next step would be to see if each property in the object has the same name. If that checks out, we
+need to see if each property in the object has the same value associated with that name. If all of
+this checks out, then the function will return true, meaning that the two objects have the same
+properties.
+
+Ok.
+
+Remaining steps to explain:
+What kind of loop do we need?
+Why Object.prototype.hasOwnProperty.call()?
+The construction of the second if statment that tests for inequality? Why !deepEqual()?
+
+After: How to re-write the solution so that the function does not test for inequality?
+For example, re-write the first conditional statement as:
+
+  if (typeof (obj1) === 'object' && typeof (obj2) === 'object' && obj1 !== null && obj2 !== null)
+
+Is there a way to write the function without Object.prototype.hasOwnProperty?
+
+*/
+
+
 function deepEqual(obj1, obj2) {
   if (typeof (obj1) !== 'object' || typeof (obj2) !== 'object' || obj1 === null || obj2 === null) {
     return obj1 === obj2
@@ -7,7 +52,7 @@ function deepEqual(obj1, obj2) {
   }
   for (const key in obj1) {
     if (Object.prototype.hasOwnProperty.call(obj1, key)) {
-      if (!(key in obj2) || deepEqual(obj1.key, obj2.key)) {
+      if (!(key in obj2) || !deepEqual(obj1[key], obj2[key])) {
         return false
       }
     }
@@ -89,6 +134,13 @@ https://eslint.org/docs/rules/no-prototype-builtins
 https://github.com/eslint/eslint/issues/7071
 
 Further questions:
+What is null?
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null
+Why is typeof(null) === 'object'?
+https://stackoverflow.com/questions/801032/why-is-null-an-object-and-whats-the-difference-between-null-and-undefined
+https://bitsofco.de/javascript-typeof/
+http://2ality.com/2013/10/typeof-null.html
+https://twitter.com/evilpies/status/393105924392374272
 What is a prototype chain?
 https://dev.to/codesmith_staff/explain-javascripts-prototype-chain-like-im-five-51p
 */
