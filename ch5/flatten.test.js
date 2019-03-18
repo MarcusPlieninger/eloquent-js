@@ -3,8 +3,8 @@ function flatten(arrays) {
 }
 
 describe('flatten()', () => {
-  const arrays1 = [[1, 2, 3], [4, 5], [6]]
   test('example from text', () => {
+    const arrays1 = [[1, 2, 3], [4, 5], [6]]
     expect(flatten(arrays1)).toEqual([1, 2, 3, 4, 5, 6])
   })
   test('longer array', () => {
