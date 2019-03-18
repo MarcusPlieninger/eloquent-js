@@ -3,10 +3,10 @@ The disjunctive conditional statment includes a test for null.
 
 This is because, while null is a primitive value that 'represents the intentional absence of any
 object value', a legacy quirk (aka 'design error' aka bug) of JavaScript is that typeof(null)
-returns object. This is because, in its first implementation, JavaScript used 0 as the type tag for
-an object. But, 0 was also used as the pointer for null.
+returns 'object'. This is because, in its first implementation, JavaScript used 0 as type tag for
+object. But, 0 was also used as the pointer for null.
 
-The opening conditional statement is not true, then the inputs must be objects.
+If the opening conditional statement is not true, then both inputs must be objects.
 
 An obvious way to check for inequality off the bat is to check the length of the array return by
 Object.keys() for each object. If the next conditional statement is true, that is, if it is true
@@ -30,6 +30,7 @@ Ok.
 
 Remaining steps to explain:
 What kind of loop do we need?
+-explain difference between forEach(), for...in, for...of
 Why Object.prototype.hasOwnProperty.call()?
 The construction of the second if statment that tests for inequality? Why !deepEqual()?
 
