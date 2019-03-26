@@ -1,9 +1,16 @@
-/* function loop(value, test, update, body) {
-  while (test(value)) {
-    body(value)
-    value = update(value)
+/* function loopWhile(n, test, update, body) {
+  while (test(n)) {
+    body(n)
+    n = update(n)
   }
 }
+
+function loopFor(n, test, update, body) {
+  for (let i = n; test(i); i = update(i)) {
+    body(i);
+  }
+}
+
 
 loop(3, n => n > 0, n => n - 1, console.log);
 // → 3
@@ -22,8 +29,8 @@ function loopWhile(n, test, update, body) {
 
 function loopFor(n, test, update, body) {
   const result = []
-  for (n; test(n); update(n)) {
-    result.push(body(n))
+  for (let i = n; test(i); i = update(i)) {
+    result.push(body(i))
   }
   return result
 }
@@ -40,5 +47,5 @@ describe('loopFor()', () => {
   })
 })
 
-// Note: Instead of console.log which does not return a value,
-// the value is converted to a string and returned in an array
+// Note: Instead of console.log which does not return a n,
+// the n is converted to a string and returned in an array
