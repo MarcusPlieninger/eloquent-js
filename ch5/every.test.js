@@ -25,4 +25,4 @@ describe('everySome()', () => {
   })
 })
 
-/* Add explanation here for how the .some() method variation makes use of De Morgan's laws.*/
+/* Add explanation here for how the .some() method variation makes use of De Morgan's laws. */
