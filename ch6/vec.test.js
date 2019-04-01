@@ -4,16 +4,17 @@ class Vec {
     this.y = y
   }
 
-  plus({ a, b }) {
-    const sumX = this.x + a
-    const sumY = this.y + b
-    return new Vec(sumX, sumY)
+  plus(vector) {
+    this.x += vector.x
+    this.y += vector.y
+    return this
   }
 
-  minus({ a, b }) {
-    const diffX = this.x - a
-    const diffY = this.y - b
-    return new Vec(diffX, diffY)
+  // just to show that destructuring is possible here
+  minus({ x, y }) {
+    this.x -= x
+    this.y -= y
+    return this
   }
 
   get length() {
