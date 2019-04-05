@@ -1,22 +1,30 @@
 class Group {
   constructor() {
-       
+    this.items = [] 
   }
 
-  add() {
-
+  add(value) {
+    if (!this.items.includes(value)) this.items.push(value)
+    return this.items
+    }
   }
 
-  delete() {
-
+  delete(value) {
+    if (this.items.includes(value)) {
+      itemToDelete = this.items.Indexof(value)
+      this.items = filter(this.items, value => this.items[i] !== value)
+    } return this.items
+  
   }
 
-  has() {
+  has(value) {
+    if (this.items.Indexof(value) !== -1) return true
+    return false
 
   }
 
   static from() {
-
+    for i of iterableObject
   }
 
 }
