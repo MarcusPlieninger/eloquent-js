@@ -24,6 +24,25 @@ class Group {
     }
     return group
   }
+
+  [Symbol.iterator]() {
+    return new GroupIterator(this)
+  }
+}
+
+class GroupIterator {
+  constructor(group) {
+    this.member = 0
+    this.group = group
+  }
+
+  next() {
+    if (this.member === this.member.length) return { done: true }
+
+    const value = { member: this.group[this.member] }
+    this.member++
+    return { value, done: false }
+  }
 }
 
 describe('Group', () => {
@@ -38,3 +57,13 @@ describe('Group', () => {
     expect(group.has(10)).toBe(false)
   })
 })
+
+function testIterator() {
+  const testOutput = []
+  for (const value of Group.from(['a', 'b', 'c'])) {
+    testOutput.push(value)
+    return testOutput
+  }
+}
+
+describe('')
