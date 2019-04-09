@@ -24,10 +24,6 @@ class Group {
     }
     return group
   }
-
-  [Symbol.iterator]() {
-    return new GroupIterator(this)
-  }
 }
 
 class GroupIterator {
@@ -45,6 +41,18 @@ class GroupIterator {
   }
 }
 
+Group.prototype[Symbol.iterator] = function returnIterator() {
+  return new GroupIterator(this)
+}
+
+function testIteration() {
+  const testOutput = []
+  for (const value of Group.from(['a', 'b', 'c'])) {
+    testOutput.push(value)
+    return testOutput
+  }
+}
+
 describe('Group', () => {
   test('examples from text', () => {
     const group = Group.from([10, 20])
@@ -58,12 +66,8 @@ describe('Group', () => {
   })
 })
 
-function testIterator() {
-  const testOutput = []
-  for (const value of Group.from(['a', 'b', 'c'])) {
-    testOutput.push(value)
-    return testOutput
-  }
-}
-
-describe('')
+describe('GroupIterator', () => {
+  test('example from text', () => {
+    expect(testIteration()).toEqual(['a', 'b', 'c'])
+  })
+})
